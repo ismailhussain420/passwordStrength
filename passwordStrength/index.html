@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Strength</title>
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            background:black;
+        }
+        .input_box { 
+
+            width :10%;
+            margin-left: 43%;
+            margin-top: 22%;
+        } 
+        input{
+            padding: 10px;
+            border: 2px solid white;
+            border-radius: 31px;
+            color:white;
+            cursor: pointer;
+        }
+        ::placeholder{
+            color:white;
+            font-size:14px
+        }
+        p{
+            color:white;
+            margin-left: 7%;
+            margin-top: 4%;
+            font-size: 13px;
+            display:none;
+        }  
+        </style>
+</head>
+<body>
+    <div class="container">
+        <div class="input_box">
+            <input type="password" id="password" placeholder="Enter Password">
+            <p id="msg">Password Strength is <span id="str"></span></p>
+        </div>
+    </div>
+  <script>
+    var password = document.getElementById("password");
+    var msg = document.getElementById("msg");
+    var str = document.getElementById("str");
+    password.addEventListener("input", ()=>{
+        if(password.value.length >0){
+            msg.style.display ="block";
+        }else{
+            msg.style.display ="none";
+
+        }
+
+
+        if(password.value.length <4 ){
+
+            str.innerHTML="weak";
+            password.style.borderColor = "red";
+            msg.style.color = "red";
+
+
+        } else if(password.value.length >= 4  && password.value.length  < 8){
+            str.innerHTML="medium";
+            password.style.borderColor = "yellow";
+            msg.style.color = "yellow";
+
+
+
+        }else if(password.value.length >= 8){
+
+            str.innerHTML="strong";
+            password.style.borderColor = "green";
+            msg.style.color = "green";
+
+
+
+
+        }
+    })
+
+
+
+
+  </script>
+</body>
+</html> 
